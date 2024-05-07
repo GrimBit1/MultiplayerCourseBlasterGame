@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "ProjectileRocket.h"
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraComponent.h"
@@ -9,6 +8,7 @@
 #include "Sound/SoundCue.h"
 #include "Components/AudioComponent.h"
 #include "RocketMovementComponent.h"
+#include "NiagaraSystemInstance.h"
 
 AProjectileRocket::AProjectileRocket()
 {
@@ -45,13 +45,12 @@ void AProjectileRocket::BeginPlay()
 			1.f,
 			0.f,
 			LoopingSoundAttenuation,
-			(USoundConcurrency*)nullptr,
-			false
-		);
+			(USoundConcurrency *)nullptr,
+			false);
 	}
 }
 
-void AProjectileRocket::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+void AProjectileRocket::OnHit(UPrimitiveComponent *HitComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit)
 {
 	if (OtherActor == GetOwner())
 	{
@@ -89,5 +88,4 @@ void AProjectileRocket::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 
 void AProjectileRocket::Destroyed()
 {
-
 }
